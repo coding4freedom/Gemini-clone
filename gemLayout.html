@@ -1,0 +1,152 @@
+<!--
+Requirements:
+- Render your root component to the `root` <div> provided below.
+- No external CSS or JavaScript should be imported besides the React and
+  ReactDOM libraries already included below.
+- Include all of your CSS and JavaScript in this file in the <style> and
+  <script> tags below.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+</head>
+<body>
+    <div id="root"></div>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        font-size: 14px;
+        color: #fff;
+        background-color: lightgray;        
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+      }
+
+      /* Side content styling */
+      .side {
+        min-width: 320px;        
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        background-color: #292a2c;
+      }
+      .collapse-btn{
+        height: 50px;
+        width: 50px;
+        color: #fff;
+        background-color: #292a2c;
+        border: none;
+        border-radius: 50%;
+      }
+      .collapse-btn:hover{
+        background-color: #555658;
+      }
+      .new-chat--btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: .5rem;
+        border: none;
+        border-radius: 30px;
+        background-color: #1f242a;
+        color: #70757b;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      .new-chat--icon {
+        margin-right: 1rem;
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      /* Main content styling */
+      .main-content {
+        width: calc(100% - 320px);
+        margin: 0 auto;
+        background-color: #1b1c1e;
+      }
+    </style>
+    <script type="text/javascript">
+        const React = window.React;
+        const ReactDOM = window.ReactDOM;
+
+        const SideContent = () => {
+
+          return React.createElement(
+            "aside",
+            { className: "side"},
+            React.createElement(Collapse),
+            React.createElement(SideCollection)
+          )
+        }
+
+        /* Content inside SideContent */
+        const Collapse = () => {
+          return React.createElement(
+            "button",
+            { className: "collapse-btn"},
+            "M"
+          )
+        }
+
+        const SideCollection = () => {
+          return React.createElement(
+            "div",
+            { className: "side-collection" },
+            React.createElement(SideNewChatBtn)
+          )
+        }
+
+        const SideNewChatBtn = () => {
+          return React.createElement(
+            "button",
+            { className: "new-chat--btn"},
+            React.createElement("span", {className: "new-chat--icon"}, "+"),
+            "New chat"
+          )
+        }
+
+        const MainContent = () => {
+
+          return React.createElement(
+            "section",
+            { className: "main-content"},
+            "main content"
+          )
+        }
+
+
+        const GemMain = () => {
+
+            return React.createElement(
+                "main",
+                { className: "container"},
+                React.createElement(SideContent),
+                React.createElement(MainContent),
+            )
+        }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(GemMain))
+    </script>    
+</body>
+</html>
