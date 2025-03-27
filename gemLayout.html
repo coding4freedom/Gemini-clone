@@ -126,6 +126,22 @@ Requirements:
           )
         }
 
+        const SideRecenWrapper = () => {
+          return React.createElement(
+            "div",
+            { className: "side-recent--wrapper"},
+            Reac.createElement( "h3", { className: "side-recent--header" }, "Recent")
+          )
+        }
+
+        const SideRecentList = () => {
+          return React.createElement(
+            'ul',
+            {className: "side-recent--list-wrapper"},
+            "ul"
+          )
+        }
+
         const MainContent = () => {
 
           return React.createElement(
